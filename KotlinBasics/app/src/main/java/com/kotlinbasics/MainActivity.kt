@@ -27,11 +27,37 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        week02variables()
-        week02Functions()
+//        week02variables()
+//        week02Functions()
+        week03Classes()
     }
 }
-fun week02Functions(){
+private fun week03Classes(){
+    println("== Kotlin Functions ==")
+
+    class Student{
+        var name: String = ""
+        var age: int = 0
+
+        fun introduce(){
+            println("Hi, I'm $name and I'm $age years old")
+        }
+    }
+    val student = Student()
+    student.name ="Kim"
+    student.age = 24
+    student.introduce()
+
+    data class Person(val name: String, val age :Int)
+
+    val person1 = Person("Lee", 25)
+    val person2 = Person("Lee", 26)
+
+    println("Person1: $person1")
+    println("Equal?: ${person1 == person2}")
+}
+
+private fun week02Functions(){
     println("Week02 Functions")
 
 //    fun greet(name : String) = "Hello, $name!"
