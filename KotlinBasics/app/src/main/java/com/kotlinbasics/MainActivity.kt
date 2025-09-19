@@ -36,40 +36,74 @@ class MainActivity : ComponentActivity() {
     }
 }
 private fun week03Classes(){
-    println("== Kotlin Functions ==")
+    Log.d("KotlinWeek03","== Kotlin Functions ==")
 
-    class Student{
-        var name: String = ""
-        var age: int = 0
-
+    class Person(val name: String, var age: Int){
         fun introduce(){
-            println("Hi, I'm $name and I'm $age years old")
+            Log.d("KotlinWeek03","안녕하세요, $name ($age 세)입니다")
+        }
+        fun birthday() {
+            age++
+            Log.d("KotlinWeek03", "$name 의 생일! 이제 $age 세...")
         }
     }
-    val student = Student()
-    student.name ="Kim"
-    student.age = 24
-    student.introduce()
+    val person1 = Person("홍길동", 31)
+    person1.introduce()
+    person2.birthday()
 
-    data class Person(val name: String, val age :Int)
+    class Animal(var species: String){
+        var weight: Double = 0.0
+        constructor(speices: String, weight: Double) : this(speices){
+            this.weight = weight
+            Log.d("KotlinWeek03", "$speices 의 무게 : 이제 $weight kg")
+        }
+        fun makeSound(){
+            Log.d("KotlinWeek03", "$speices 가 소리를 냅니다")
+        }
+    }
+    val puppy = Animal("강아지", 6.5)
+    puppy.makeSound()
 
-    val person1 = Person("Lee", 25)
-    val person2 = Person("Lee", 26)
-
-    println("Person1: $person1")
-    println("Equal?: ${person1 == person2}")
+//    class Student{
+//        var name: String = ""
+//        var age: int = 0
+//
+//        fun introduce(){
+//            println("Hi, I'm $name and I'm $age years old")
+//        }
+//    }
+//    val student = Student()
+//    student.name ="Kim"
+//    student.age = 24
+//    student.introduce()
+//
+//    data class Person(val name: String, val age :Int)
+//
+//    val person1 = Person("Lee", 25)
+//    val person2 = Person("Lee", 26)
+//
+//    println("Person1: $person1")
+//    println("Equal?: ${person1 == person2}")
 }
 
 private fun week03Collections(){
     Log.d("KotlinWeek03","== Kotlin Collections ==")
 
     val fruits = listOf("apple","banana","orange")
+    val mutableFruits = mutableListOf("kiwi","watermelon")
+    mutableFruits.add("banana")
     //fruits.add("kiwi") //오류임
     Log.d("KotlinWeek03", "Fruits : $fruits")
+    Log.d("KotlinWeek03", "Mutable Fruits : $mutableFruits")
 
-    for(fruit in fruits)
+    val scores = mapOf("Kim" to 97, "Park" to 100, "Lee" to 99)
+    Log.d("kotlinWeek03", "Scores : $scores")
+
+    for(fruit in fruits) {
         Log.d("KotlinWeek03", "Fruits : $fruits")
+    }
 
+    scores.forEach{(name,score) -> Log.d("KotlinWeeok03","$name scored $score")}
 }
 
 private fun week02Functions(){
