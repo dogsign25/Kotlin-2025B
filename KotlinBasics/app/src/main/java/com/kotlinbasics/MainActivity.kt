@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.kotlinbasics.ui.theme.KotlinBasicsTheme
+import andriod.utill.log
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +32,7 @@ class MainActivity : ComponentActivity() {
 //        week02variables()
 //        week02Functions()
         week03Classes()
+        week03Collections()
     }
 }
 private fun week03Classes(){
@@ -55,6 +58,18 @@ private fun week03Classes(){
 
     println("Person1: $person1")
     println("Equal?: ${person1 == person2}")
+}
+
+private fun week03Collections(){
+    Log.d("KotlinWeek03","== Kotlin Collections ==")
+
+    val fruits = listOf("apple","banana","orange")
+    //fruits.add("kiwi") //오류임
+    Log.d("KotlinWeek03", "Fruits : $fruits")
+
+    for(fruit in fruits)
+        Log.d("KotlinWeek03", "Fruits : $fruits")
+
 }
 
 private fun week02Functions(){
