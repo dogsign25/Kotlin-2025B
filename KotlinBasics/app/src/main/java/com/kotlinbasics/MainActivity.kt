@@ -64,6 +64,27 @@ private fun week03Classes(){
     val puppy = Animal("강아지", 6.5)
     puppy.makeSound()
 
+    class Dog(species: String,weight: Double, val breed: String) : Animal(species,weight){
+        override fun makeSound(){
+            Log.d("KotlinWeek03", "$breed ($speices) 가 멍멍 짖습니다")
+        }
+    }
+    val dog("개",12.5,"골든 리트리버")
+    dog.makeSound()
+
+    data class Book(val title: String, val author: String, val pages: Int)
+
+    val book1 = Book("코틀린 입문","Kim",400)
+    val book2 = Book("코틀린 입문","Kim",400)
+
+    Log.d("KotlinWeek03","book1 == book2 : ${book1 == book2}")
+    Log.d("KotlinWeek03","book1 : $book1")
+
+
+
+
+
+
 //    class Student{
 //        var name: String = ""
 //        var age: int = 0
