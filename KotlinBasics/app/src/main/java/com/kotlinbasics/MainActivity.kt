@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.kotlinbasics.ui.theme.KotlinBasicsTheme
-import andriod.utill.log
+import android.util.Log
 
 
 class MainActivity : ComponentActivity() {
@@ -49,16 +49,16 @@ private fun week03Classes(){
     }
     val person1 = Person("홍길동", 31)
     person1.introduce()
-    person2.birthday()
+    person1.birthday()
 
-    class Animal(var species: String){
+    open class Animal(var species: String){
         var weight: Double = 0.0
         constructor(speices: String, weight: Double) : this(speices){
             this.weight = weight
             Log.d("KotlinWeek03", "$speices 의 무게 : 이제 $weight kg")
         }
-        fun makeSound(){
-            Log.d("KotlinWeek03", "$speices 가 소리를 냅니다")
+        open fun makeSound(){
+            Log.d("KotlinWeek03", "$species 가 소리를 냅니다")
         }
     }
     val puppy = Animal("강아지", 6.5)
@@ -66,10 +66,10 @@ private fun week03Classes(){
 
     class Dog(species: String,weight: Double, val breed: String) : Animal(species,weight){
         override fun makeSound(){
-            Log.d("KotlinWeek03", "$breed ($speices) 가 멍멍 짖습니다")
+            Log.d("KotlinWeek03", "$breed ($species) 가 멍멍 짖습니다")
         }
     }
-    val dog("개",12.5,"골든 리트리버")
+    val dog = Dog("개",12.5,"골든 리트리버")
     dog.makeSound()
 
     data class Book(val title: String, val author: String, val pages: Int)
