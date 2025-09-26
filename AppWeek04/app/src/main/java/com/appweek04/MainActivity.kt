@@ -1,20 +1,30 @@
 package com.appweek04
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        val editTextName = findViewById<EditText>(R.id.editTextName)
+        val buttonGreet = findViewById<Button>(R.id.buttonGreet)
+        val textviewGreeting = findViewById<TextView>(R.id.textViewGreeting)
+
+        buttonGreet.setOnClickListener{
+            val name = editTextName.text.toString().trim()
+
+            if(name.isNotEmpty()){
+                textviewGreeting.text = "안녕, ${name}님~"
+                textviewGreeting.visibility = View.VISIBLE
+            } else {
+                textviewGreeting.text = "너의 이름은?"
+                textviewGreeting.visibility = View.VISIBLE
+            }
         }
     }
 }
