@@ -1,6 +1,7 @@
 package com.appweek04
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -15,16 +16,18 @@ class MainActivity : AppCompatActivity() {
         val buttonGreet = findViewById<Button>(R.id.buttonGreet)
         val textviewGreeting = findViewById<TextView>(R.id.textViewGreeting)
 
+        var greeting: String = ""
         buttonGreet.setOnClickListener{
             val name = editTextName.text.toString().trim()
 
             if(name.isNotEmpty()){
-                textviewGreeting.text = "안녕, ${name}님~"
-                textviewGreeting.visibility = View.VISIBLE
+                greeting = "안녕, ${name}님~"
             } else {
-                textviewGreeting.text = "너의 이름은?"
-                textviewGreeting.visibility = View.VISIBLE
+                greeting = "너의 이름은?"
             }
+            textviewGreeting.text = greeting
+            textviewGreeting.visibility = View.VISIBLE
+            Log.d("KotlinWeek04App", greeting)
         }
     }
 }
