@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         setupViews()
         setupRecyclerView()
         setupListeners()
-        observeStudents()
+        observeStudents() //추가된 항목
     }
 
     /**
