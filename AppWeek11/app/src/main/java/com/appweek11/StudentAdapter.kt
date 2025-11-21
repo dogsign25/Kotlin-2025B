@@ -3,7 +3,7 @@ package com.appweek11
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.appweek10.databinding.ItemStudentBinding
+import com.appweek11.databinding.ItemStudentBinding
 
 class StudentAdapter(
     private var studentList: List<Student>,
