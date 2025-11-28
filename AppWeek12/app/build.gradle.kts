@@ -47,11 +47,13 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    //viewModel, LiveData
+    //viewModel, StateFlow
     val lifecycleVersion = "2.7.0"
+    val coroutineVersion = "1.7.3"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:${lifecycleVersion}")
     implementation("androidx.activity:activity:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:{$coroutineVersion}")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
