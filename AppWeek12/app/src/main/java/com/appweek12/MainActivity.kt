@@ -18,7 +18,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(savedInstanceState != null){ //널이 아니라면 저장되어있는 값 가져오기
+            count = savedInstanceState.getInt("count",0)
+        }
+
         setupListeners()
+        updateCountDisplay()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("count",count)
     }
 
     private fun setupListeners(){
