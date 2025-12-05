@@ -3,51 +3,29 @@ package com.appweek13b
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import com.appweek13b.ui.theme.AppWeek13bTheme
+import androidx.activity.viewModels
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel: StudentViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            LazyColumn(
-                modifier = Modifier //수정
-                    .background(color = Color.Cyan) //배경 하늘색
-                    .fillMaxWidth() //가로로 채우기
-            ) {
-                items(98){
-                    index -> Text(text="코틀린 ${index + 1}")
+            val students by viewModel.students.collectAsState() // StateFlow의 역할
+
+            StudentListScreen(
+                students = students,
+                onAddClick = { name ->
+                    viewModel.addStudent(name)
+                },
+                onDeleteClick = { student ->
+                    viewModel.deleteStudent(student)
                 }
-            }
+            )
         }
-
-
-//        setContent {
-//            val scrollState = rememberScrollState()
-//           Column(
-//               modifier = Modifier //수정자
-//                   .background(color = Color.Blue) //배경 파란색
-//                   .fillMaxWidth() //가로로 채우기
-//                   .verticalScroll(scrollState) //수직 스크롤 생기게
-//           ){
-//               for(i in 1 .. 90){
-//                   Text("코틀린 $i") // TextView
-//               }
-//           }
-//        } //setContent
     }
 }
